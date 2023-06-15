@@ -1,10 +1,10 @@
 ﻿namespace OpenClose_0706
 {
-    public class FinalInvoice : Invoice
+    public class FinalInvoice : IInvoice
     {
-        public override double GetInvoiceDiscount(double amount)
+        public double GetInvoiceDiscount(double amount)
         {
-            return base.GetInvoiceDiscount(amount) - 50;
+            return amount - 50;
         }
     }
 }

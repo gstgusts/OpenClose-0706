@@ -1,10 +1,10 @@
 ﻿namespace OpenClose_0706
 {
-    public class RecurringInvoice : Invoice
+    public class RecurringInvoice : IInvoice
     {
-        public override double GetInvoiceDiscount(double amount)
+        public double GetInvoiceDiscount(double amount)
         {
-            return base.GetInvoiceDiscount(amount) - 30;
+            return amount - 30;
         }
     }
 }

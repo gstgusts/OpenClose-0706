@@ -6,18 +6,20 @@
         {
             Console.WriteLine("Invoice Amount: 10000");
 
-            Invoice FInvoice = new FinalInvoice();
-            double FInvoiceAmount = FInvoice.GetInvoiceDiscount(10000);
-            Console.WriteLine($"Final Invoive : {FInvoiceAmount}");
+            IInvoice FInvoice = new FinalInvoice();
 
-            Invoice PInvoice = new ProposedInvoice();
-            double PInvoiceAmount = PInvoice.GetInvoiceDiscount(10000);
-            Console.WriteLine($"Proposed Invoive : {PInvoiceAmount}");
+            IInvoice PInvoice = new ProposedInvoice();
 
-            Invoice RInvoice = new RecurringInvoice();
-            double RInvoiceAmount = RInvoice.GetInvoiceDiscount(10000);
-            Console.WriteLine($"Recurring Invoive : {RInvoiceAmount}");
-            Console.ReadKey();
+            IInvoice RInvoice = new RecurringInvoice();
+
+            IInvoice TInvoice = new TestInvoice();
+
+            var invoices = new List<IInvoice> { FInvoice, PInvoice, RInvoice, TInvoice };
+
+            foreach (var invoice in invoices)
+            {
+                Console.WriteLine($"Invoice { invoice.GetType() } discount is: " + invoice.GetInvoiceDiscount(10000));
+            }
         }
     }
 }
